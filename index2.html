@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoyalDev Portfolio</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #464cc6, #1e0f54);
+        }
+
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease; /* Smooth transition for all properties */
+        }
+
+        a:hover {
+            color: #40e0d0; /* Hover color change */
+            text-decoration: underline; /* Underline text on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #3916c6;
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            margin: 20px 3.4%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #header-wrapper {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        header ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        header ul li a {
+            color: yellow;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        header ul li a:hover {
+            color: #40e0d0;
+        }
+
+        /* Mobile and Tablet Responsive Styles */
+        @media (max-width: 768px) {
+            header {
+                margin-left: 5%;
+                margin-right: 5%;
+            }
+
+            #header-wrapper {
+                width: 90%;
+            }
+
+            header ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            header ul li {
+                margin-bottom: 10px;
+            }
+
+            header ul li a {
+                font-size: 1em;
+            }
+        }
+
+        /* Section Styles */
+        #home {
+            text-align: center;
+            height: 60vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hello {
+            font-size: 3em;
+            margin-top: 30px;
+            color: #40e0d0;
+            text-shadow: 2px 2px 4px #000000;
+        }
+
+        #im {
+            color: yellow;
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        #web {
+            color: azure;
+            text-decoration: italic;
+        }
+
+        #build {
+            color: #59acbc;
+            font-size: 2em;
+            margin-top: 60px;
+        }
+
+       .circle-design, .circle-design-2 {
+            position: absolute;
+            top: 50%;
+            
+            height: 700px;
+            background: linear-gradient(135deg, #40e0d0, #1e0f54);
+            transform: translateY(-50%);
+            
+        }
+
+
+        .circle-design-2 {
+            left: 100vw;
+            width: 600px;
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+            animation: moveInOutRight 7s ease-in-out infinite;
+        }
+
+        /* Animation: move inwards 20% of screen, then return */
+  
+
+        @keyframes moveInOutRight {
+            0% {
+                left: 100vw;
+            }
+            50% {
+                left: 95vw; /* Move in to 80% of viewport (20% from right) */
+            }
+            100% {
+                left: 100vw;
+            }
+        }
+
+
+
+        /* About Section Styles */
+        #about {
+            padding: 40px 20px;
+            color: #000;
+            height: 50vh;
+        }
+
+        #about h3 {
+            text-align: center;
+            padding-right: 20%;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: azure;
+            text-decoration: underline;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            position: relative;
+        }
+
+        .about-text {
+            flex: 1;
+            font-size: 1em;
+            line-height: 1.6;
+            color: azure;
+            text-align: left;
+            margin-right: -80px;
+            z-index: 2;
+            padding-right: 100px;
+            text-shadow: 2px 2px 4px #000000;
+            background: linear-gradient(to right, transparent 75%, rgba(0,0,0,0.7));
+        }
+
+        .about-image {
+            position: relative;
+            flex-shrink: 0;
+            z-index: 1;
+            max-width: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+            z-index: 3;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.10);
+            background: linear-gradient(135deg, #40e0d0, #1e0f54);
+            opacity: 0.8;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            background: linear-gradient(135deg, #40e0d0, #1e0f54);
+            opacity: 0.5;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        /* Skills Section */
+        #skills {
+            padding: 40px 20px;
+            height: 30vh;
+        }
+
+        #skills h3 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: azure;
+            text-decoration: underline;
+            padding-bottom: 30px;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid layout */
+            gap: 20px;
+            text-align: center;
+        }
+
+        .skill-grid div img {
+            width: 60px; /* Set the image width to 60px */
+            height: 60px; /* Set the image height to 60px */
+            max-width: 100%; /* Ensure image scales well */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 50%; /* Circular shape */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9); /* Subtle shadow for depth */
+            transition: transform 0.3s ease; /* Smooth hover transition */
+        }
+
+        .skill-grid div img:hover {
+            transform: scale(1.1); /* Slight zoom effect on hover */
+        }
+
+        .skill-grid div a {
+            color: azure; /* Set link color to azure */
+            text-decoration: none;
+            display: block; /* Make it block level for better hover effect */
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease; /* Smooth transition */
+        }
+
+        .skill-grid div a:hover {
+            background-color: #40e0d0;
+            color: #464cc6;
+            transform: scale(1.05);
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Projects Section */
+        #projects {
+            padding: 40px 20px;
+            color: #000;
+            height: 50vh;
+        }
+
+        #projects h3 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: azure;
+            text-decoration: underline;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .project-card {
+            background-color: #9575cd;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid #40e0d0;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .project-card a {
+            color: azure;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-card:hover {
+            background-color: #40e0d0;
+            color: #464cc6;
+            transform: translateY(-4px);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .project-card a:hover {
+            color: #464cc6;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 40px 20px;
+            color: #000;
+            text-align: center;
+            height: 50vh;
+        }
+
+        #contact h3 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: azure;
+            text-decoration: underline;
+        }
+
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #contact button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #9575cd;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #contact button:hover {
+            background-color: #40e0d0;
+            color: #464cc6;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            font-weight: italic;
+            text-decoration: underline;
+        }
+
+        #contact button:focus {
+            outline: none;
+            box-shadow: 0 0 5px 2px rgba(64, 224, 208, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #9575cd;
+        }
+
+        footer button {
+            padding: 10px 20px;
+            background-color: #9575cd;
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        footer button:hover {
+            background-color: #40e0d0;
+            color: #464cc6;
+            transform: scale(1.1);
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #9575cd;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #back-to-top:hover {
+            background-color: #40e0d0;
+        }
+
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <div id="header-wrapper">
+            <nav>
+                <ul id="ul-list">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="circle-design"></div>
+        <div class="circle-design-2"></div>
+        <h1 id="hello">Hello, I'm <span id="im">Royal</span></h1>
+        <h2 >A <span id="web">web</span> Developer</h2>
+        <p id="build">I build websites and applications that solve problems and make life easier.</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h3>About Me</h3>
+        <div class="about-container">
+            <div class="about-text">
+                <p>                    Hi! I’m Alozie Royal Chiagozie — a passionate and driven web developer from Nigeria, specializing in front-end development and actively working towards becoming a full-stack developer.
+
+                    With a strong foundation in HTML, CSS, JavaScript, and React, I love crafting beautiful, responsive websites that are both visually engaging and functionally robust. I'm currently honing my skills at ALT School, where I’m learning best practices and deepening my expertise in modern front-end technologies.
+                    
+                    I bring my projects to life using VS Code, manage code efficiently with Git, and continuously sharpen my problem-solving skills by tackling challenges on LeetCode. I’m committed to writing clean, optimized code and building intuitive, user-centered experiences.
+                    
+                    Beyond coding, I’m passionate about using technology to solve real-world problems and improve lives. From developing interactive web apps to collaborating on exciting projects or diving into complex algorithms, I’m always eager to grow and explore new possibilities.
+                    
+                    Let’s connect! If you're interested in teaming up, exchanging ideas, or just chatting about tech — I’m all in.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="Gent.jpg" alt="Royal">
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h3>My Skills</h3>
+        <div class="skill-grid">
+            <div>
+                <img src="html.png" alt="HTML">
+                <a href="#">HTML</a>
+            </div>
+            <div>
+                <img src="css.png" alt="CSS">
+                <a href="#">CSS</a>
+            </div>
+            <div>
+                <img src="javascript.png" alt="JavaScript">
+                <a href="#">JavaScript</a>
+            </div>
+            <div>
+                <img src="vscode.png" alt="React">
+                <a href="#">React</a>
+            </div>
+            <div>
+                <img src="react.svg" alt="React">
+                <a href="#">React</a>
+            </div>
+            <div>
+                <img src="github.png" alt="React">
+                <a href="#">React</a>
+            </div>
+            <!-- Add other skills as needed -->
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h3>Projects</h3>
+        <div class="project-grid">
+            <div class="project-card">
+                <h4>Project One</h4>
+                <p>E-commerce Platform</p>
+                <a href="https://github.com/yourusername/project-one">View Project</a>
+            </div>
+            <div class="project-card">
+                <h4>Project Two</h4>
+                <p>Landing Page</p>
+                <a href="https://github.com/yourusername/project-two">View Project</a>
+            </div>
+            <div class="project-card">
+                <h4>Project One</h4>
+                <p>Portfolio Website</p>
+                <a href="https://github.com/yourusername/project-one">View Project</a>
+            </div>
+            <div class="project-card">
+                <h4>Project One</h4>
+                <p>School Website</p>
+                <a href="https://github.com/yourusername/project-one">View Project</a>
+            </div>
+            <!-- Add more projects as needed -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h3>Contact Me</h3>
+        <form action="#">
+            <input type="email" placeholder="Your email" required>
+            <textarea placeholder="Your message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Designed by Royal | All Rights Reserved</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top">↑</button>
+
+    <script>
+        // Back to Top Button Functionality
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        };
+
+        backToTopButton.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
+</body>
+</html>
